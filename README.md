@@ -1,3 +1,89 @@
+# Aliases
+
+Aliases are defined in **jsconfig.json** under `compilerOptions => paths`. In order for the tester to locate aliased modules **jest.config.js** moduleNameMapper property needs to match the project aliases. All imports should utilize aliases except in the case of grouped files such as:
+
+- ComponentName.js
+- ComponentName.module.scss
+- ComponentName.test.js
+  <br>
+  <br>
+
+# Generate React CLI
+
+We use _generate-react-cli_ as our snippet script to create React components. **generate-react-cli.json** config is located at the root of the work folder. `npm run component ComponentName` command generates following files:
+
+- ComponentName.js
+- ComponentName.module.scss
+- ComponentName.test.js
+
+Link: [GitHub README](https://github.com/arminbro/generate-react-cli "generate-react-cli")
+<br>
+<br>
+
+# Jest
+
+We use Jest to unit test complex functionality and components. To run the sweet of Jest tests run `npm run test`. Every component is generated with a .test.js file which contains a basic render test. The **jest.config.js** needs to contain the aliases of **jsconfig.json** in the moduleNameMapper property to find modules. To debug Jest test refer to the debugging section below.
+
+Link: [Jest Documentation](https://jestjs.io/docs/getting-started "Jest documentation")
+<br>
+<br>
+
+# MUI Core
+
+Our team uses Material design as a baseline and we integrate changes on top of that. MUI Core is the React Material library we use to implement Material design components.
+
+Link: [MUI Core Documentation](https://mui.com/material-ui/getting-started/overview/ "Material UI Core Documentation")
+
+<br>
+<br>
+# Debugging
+
+## VSCode Recipe
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Next.js: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    },
+    {
+      "name": "Debug Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
