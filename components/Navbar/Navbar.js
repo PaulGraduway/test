@@ -4,7 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const math = 2 * 2
+  const math = 2 * 2;
   const huh = math + math;
   return (
     <div className={styles.Navbar} data-testid="Navbar">
