@@ -14,5 +14,5 @@ jobs:
       - name: Install Step
         run: npm ci
       - name: Test Step
-        run: npm run test
+        run: npm run test:ci
       - run: echo "🍏 This job's status is ${{ job.status }}."
